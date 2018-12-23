@@ -1,9 +1,9 @@
 import { Routes, ActivatedRoute } from '@angular/router';
-import { AppComponent } from "./app.component";
 import { UnidadeComponent } from './unidade/unidade.component';
+import { PessoaComponent } from './pessoa/pessoa.component';
 
 export const APP_ROUTES: Routes = [
-    { path: '', component: AppComponent},
+    { path: '', component: PessoaComponent},
     { path: 'unidade', component: UnidadeComponent}
 ];
 

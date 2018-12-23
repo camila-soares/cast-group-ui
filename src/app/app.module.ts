@@ -8,11 +8,13 @@ import { AppService } from './app.service';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { UnidadeComponent } from './unidade/unidade.component';
+import { PessoaComponent } from './pessoa/pessoa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UnidadeComponent
+    UnidadeComponent,
+    PessoaComponent
   ],
   imports: [
     BrowserModule,
