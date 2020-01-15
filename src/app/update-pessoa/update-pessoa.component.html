@@ -16,11 +16,11 @@
 
   <section>
     <div class="container">
-      <form  method="post" #frm="ngForm" (ngSubmit)="criar(frm)">
+      <form (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text" name="nome"
-            class="form-control" placeholder="Nome"
+            class="form-control" id="nome"
             [(ngModel)]="pessoa.nome" required/>
         </div>
     
@@ -35,8 +35,8 @@
 
       <div class="form-group">
         <label for="email">E-mail</label>
-        <input  type="email" id="email" name="email"
-          class="form-control" placeholder="E-mail"
+        <input  type="text" id="email" name="email"
+          class="form-control"
           [(ngModel)]="pessoa.email" required/>
       </div>  
 
@@ -49,23 +49,21 @@
 
       <div class="form-group">
         <label for="naturalidade">Naturalidade</label>
-        <input type="naturalidade" id="naturalidade" name="naturalidade"
-            class="form-control" placeholder="Naturalidade"
+        <input type="text" id="naturalidade" name="naturalidade"
+            class="form-control"
             [(ngModel)]="pessoa.naturalidade" required/>
         </div>
       
         
       <div class="form-group">
         <label for="nacionalidade">Nacionalidade</label>
-        <input type="nacionalidade" id="nacionalidade" name="nacionalidade"
-            class="form-control" placeholder="Nacionalidade"
+        <input type="text" class="form-control" id="nacionalidade" name="nacionalidade"
             [(ngModel)]="pessoa.nacionalidade" required/>
       </div>
 
       <div class="form-group">
           <label for="cpf">CPF</label>
-          <input maxlength="11" type="cpf" id="cpf" name="cpf"
-              class="form-control" placeholder="CPF"
+          <input class="form-control" maxlength="11" type="text" id="cpf" name="cpf"
               [(ngModel)]="pessoa.cpf" required/>
           </div>
         

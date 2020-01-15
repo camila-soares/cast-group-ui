@@ -5,8 +5,8 @@ export class Pessoa {
     sexo: string;
     email:  string;
     dtnasc: Date;
-    nacionalidade: string;
     naturalidade: string;
+    nacionalidade: string;
     cpf: string;
 
 }

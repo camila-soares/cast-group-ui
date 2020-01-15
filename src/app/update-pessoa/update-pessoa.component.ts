@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Pessoa } from '../pessoa';
 
 @Component({
-  selector: 'update-pessoa',
+  selector: 'app-update-pessoa',
   templateUrl: './update-pessoa.component.html',
   styleUrls: ['./update-pessoa.component.css']
 })
@@ -17,6 +16,12 @@ export class UpdatePessoaComponent implements OnInit {
 
   ngOnInit() {
     this.pessoa = new Pessoa();
+    this.codigo = this.route.snapshot.params['codigo']; 
+
+    this.service.getPessoa(this.codigo).subscribe(resposta => {
+      console.log(resposta)
+      this.pessoa = resposta;
+    }, error => console.log(error));
 
   }
 
@@ -33,7 +38,7 @@ export class UpdatePessoaComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/pessoa']);
+    this.router.navigate(['']);
   }
 
    

@@ -4,7 +4,7 @@ import { PessoaComponent } from './pessoa/pessoa.component';
 
 export const APP_ROUTES: Routes = [
     { path: '', component: PessoaComponent},
-    { path: 'update-pessoa', component: UpdatePessoaComponent}
+    { path: 'update/:codigo', component: UpdatePessoaComponent}
 ];
 
 //export const routing: ModuleWithProviders = ActivatedRoute.(APP_ROUTES);

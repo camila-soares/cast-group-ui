@@ -13,12 +13,16 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
+  getPessoa(codigo: number): Observable<any> {
+    return this.http.get(`${this.pessoaUrl}/${codigo}`);
+  }
+
   listar() {
     return this.http.get<Array<any>>(this.pessoaUrl);
   }
 
-  updatePessoa(codigo,pessoa:any): Observable<object>{
-    return this.http.put<Array<any>>(this.pessoaUrl+'/'+ `${codigo}`, pessoa);
+  updatePessoa(codigo: number, pessoa:any): Observable<object>{
+    return this.http.put(`${this.pessoaUrl}/${codigo}`, pessoa);
   }
 
   dletePessoa(codigo){

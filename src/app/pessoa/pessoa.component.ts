@@ -37,8 +37,8 @@ export class PessoaComponent implements OnInit {
     });
 }
 
-update(codigo: number) {
- this.router.navigate(['update', codigo])
+updatePessoa(codigo: number) {
+ this.router.navigate(['update', codigo]);
 }
 
 delete(codigo: number) {
