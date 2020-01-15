@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, } from '@angular/forms';
 import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoa',
@@ -8,20 +9,23 @@ import { AppService } from '../app.service';
   styleUrls: ['./pessoa.component.css']
 })
 export class PessoaComponent implements OnInit {
-  unidades: Array<any>;
   pessoas: Array<any>;
   pessoa: any;
+  codigo: number;
 
-  constructor(private service: AppService) { }
 
+
+  constructor(private service: AppService, private router: Router) { 
+    }
+ 
+
+  
   ngOnInit() {
     this.pessoa = {};
 
+    //this.criarFormularioDeUsuario();
     this.service.listar()
       .subscribe(resposta => this.pessoas = resposta);
-
-      this.service.listarUnidade()
-    .subscribe(resposta => this.unidades = resposta);
   }
 
   criar(frm: FormGroup) {
@@ -29,7 +33,21 @@ export class PessoaComponent implements OnInit {
       this.pessoas.push(resposta);
 
       frm.reset();
+      this.service.listar();
     });
-
 }
+
+update(codigo: number) {
+ this.router.navigate(['update', codigo])
+}
+
+delete(codigo: number) {
+  this.service.dletePessoa(codigo).subscribe(resposta => {
+    this.service.listar();
+    this.pessoa = resposta
+    
+  });
+}
+
+
 }

@@ -10,7 +10,7 @@
 <main role="main">
   <section class="my-4">
     <div class="container">
-        <h2>Cadastro de pessoas</h2>
+        <h2>Alteração de pessoas</h2>
     </div>
   </section>
 
@@ -72,43 +72,6 @@
 
         <button type="submit" class="btn btn-primary">Salvar</button>
       </form>
-    </div>
-  </section>
-
-  <section class="mt-5">
-    <div class="container">
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead class="thead-light text-center">
-            <tr>
-              <th>Código</th>
-              <th class="w-50">Nome</th>
-              <th class="w-25">Sexo</th>
-              <th class="w-25">E-mail</th>
-              <th class="w-25">Data nascimento</th>
-              <th class="w-25">Naturalidade</th>
-              <th class="w-25">Nacionalidade</th>
-              <th class="w-25">CPF</th>
-              <th class="w-25">Ações</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr *ngFor="let p of pessoas">
-              <td class="text-center w-10">{{p.codigo}}</td>
-              <td>{{p.nome}}</td>
-              <td>{{p.sexo}}</td>
-              <td>{{p.email}}</td>
-              <td>{{p.dtnasc}}</td>
-              <td>{{p.naturalidade}}</td>
-              <td>{{p.nacionalidade}}</td>
-              <td>{{p.cpf}}</td>
-              <button type="button" (click)="update(p.codigo)" class="btn btn-secundary">Alterar</button>
-              <button type="button" (click)="delete(p.codigo)"class="btn btn-danger">Excluir</button>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </section>
 </main>

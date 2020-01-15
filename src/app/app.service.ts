@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-
+  codigo: number;
   pessoaUrl = 'http://localhost:8080/pessoa';
 
-  unidadeUrl = 'http://localhost:8080/unidade';
+ // unidadeUrl = 'http://localhost:8080/unidade';
 
   constructor(private http: HttpClient) { }
 
@@ -16,15 +17,15 @@ export class AppService {
     return this.http.get<Array<any>>(this.pessoaUrl);
   }
 
-  listarUnidade(){
-    return this.http.get<Array<any>>(this.unidadeUrl);
+  updatePessoa(codigo,pessoa:any): Observable<object>{
+    return this.http.put<Array<any>>(this.pessoaUrl+'/'+ `${codigo}`, pessoa);
+  }
+
+  dletePessoa(codigo){
+    return this.http.delete<Array<any>>(this.pessoaUrl+'/'+`${codigo}`)
   }
 
   criar(pessoa: any) {
     return this.http.post(this.pessoaUrl, pessoa);
-  }
-
-  criarUnidade(unidade: any){
-    return this.http.post(this.unidadeUrl, unidade);
   }
 }
