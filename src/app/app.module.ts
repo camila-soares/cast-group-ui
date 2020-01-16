@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -9,12 +9,15 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { UpdatePessoaComponent } from './update-pessoa/update-pessoa.component';
 import { PessoaComponent } from './pessoa/pessoa.component';
+import { LoginComponent } from './login/login.component';
+import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UpdatePessoaComponent,
     PessoaComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -24,7 +27,11 @@ import { PessoaComponent } from './pessoa/pessoa.component';
     //ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [AppService],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: BasicAuthInterceptorService,
+    multi: true
+  },AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
